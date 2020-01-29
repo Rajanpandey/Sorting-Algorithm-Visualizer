@@ -83,6 +83,28 @@ def insertion_sort(nums):  # n^2
         # Insert the item
         nums.set(j + 1, item_to_insert)
 
+def shell_sort(nums):  # n^2
+    # Start with a big gap then reduce the gap
+    n = nums.get_len()
+    gap = n//2
+    # Do a gapped insertion sort for this gap size
+    # The first gap elements are already in gapped order
+    # Keep adding one more element until the entire array is gap sorted
+    while gap > 0:
+        for i in range(gap, n):
+            # add nums.values[i] to the elements that have been gap sorted
+            # save nums.values[i] in temp and make a hole at position i
+            temp = nums.values[i]
+            # shift earlier gap-sorted elements up until the correct
+            # location for nums.values[i] is found
+            j = i
+            while  j >= gap and nums.values[j-gap] > temp:
+                nums.set(j, nums.values[j-gap])
+                j -= gap
+            # put temp (the original nums.values[i]) in its correct location
+            nums.set(j, temp)
+        gap //= 2
+
 
 def heap_sort(nums):  # n * logn
 
