@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import sys
 
-
+# Defining the plot function
 def plot(arr):
     plt.clf()
     plt.bar(range(len(arr)), arr, align='edge', width=1, data=arr)
@@ -16,7 +16,7 @@ def on_close(event):
 def show():
     plt.show()
 
-
+# Creating a figure
 fig, graph = plt.subplots()
 fig.canvas.mpl_connect('close_event', on_close)
 graph.yaxis.set_visible(False)
